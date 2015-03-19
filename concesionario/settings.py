@@ -2,7 +2,7 @@
 
 import os
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -163,8 +163,3 @@ LOGGING = {
         },
     }
 }
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'jamelo848@misena.edu.co'
-EMAIL_HOST_PASSWORD = 'jhon3584'
-EMAIL_USE_TLS = True
