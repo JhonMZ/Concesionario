@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Lista De Clientes</title>
+</head>
+<body>
+	<h1>Catalogo De Clientes</h1>
+	{% if clientes %}
+		{% for p in clientes %}
+			<p>{{ p.nombre }}</p>
+		{% endfor %}
+	{% else %}
+		<h2>No existen clientes activos a la venta :( </h2>
+	{% endif %}
+</body>
+</html>

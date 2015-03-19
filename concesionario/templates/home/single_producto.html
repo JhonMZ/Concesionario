@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Carro
+{% endblock %}
+
+{% block content %}
+	<h1>{{ carro.carnombre }}</h1>
+	{% if carro.imagen %}
+		<img src="/media/{{carro.imagen}}" width = "150px" heigth = "150px"/>
+	{% endif %}
+	<br>
+	{% for c in carro.color.all %}
+		{{c}}
+	{% endfor %}
+	<p>Marca: {{ carro.marca }}</p>
+	<p>Categoria: 
+	{% for c in carro.categoria.all %}
+		{{c}}
+	{% endfor %}
+	</p>
+	<p>Motor: {{ carro.motor }}</p>
+	<p>Precio: {{ carro.precio }}</p>
+
+	<a href="/carros/page/1">Mostrar la lista de productos</a>
+{% endblock %}

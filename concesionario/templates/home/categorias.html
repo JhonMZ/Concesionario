@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Lista de categorias
+{% endblock %}
+
+{% block content %}
+	<h1>Categorias</h1>
+	{% if user.is_authenticated %}
+		<a Class="btn btn-primary " href="{% url 'vista_agregar_categoria'%}"><li class = "icon-plus"></li>Agregar Categoria</a>
+		<br>
+	{% endif %}
+
+	{% if categoria %}
+	<table class = "table table-hover">
+		<theader>
+			<tr>
+				<th>Categoria</th>
+			</tr>
+		</theader>
+		{% for ca in categoria %}
+			<tbody>
+				<tr>
+					<td>{{ ca.catnombre }}</td>
+					<td>
+						{% if user.is_authenticated %}
+						<a class = "btn" href = "/edit/categoria/{{ ca.id }}"><li class = "icon-pencil"></li> Editar</a>
+						{% endif%}
+					</td>
+				</tr>
+			</tbody>
+		{% endfor %}
+	</table>
+	{% else %}
+		<h2>No existen Categorias </h2>
+	{% endif %}
+	{% if categoria %}
+	<div class="pagination">
+		<div class ="pagination pagination-centered">
+			<ul>
+				<li><a href="/categorias/page/1"> << </a> </a></li>
+					{%if categoria.has_previous%}
+					<li><a href="/categorias/page/{{categoria.previous_page_number}}">Anterior</a></li>
+					{%else%}
+						<li><a href="#">Anterior </a></li>
+					{%endif%}
+
+					{% if categoria.has_next %}
+						<li><a href ="/categorias/page/{{categoria.next_page_number}}">Siguiente</a></li>
+					{% else %}
+						<li><a href ="#">Siguiente</a></li>
+					{% endif %}
+						<li><a href= "/categorias/page/{{categoria.paginator.num_pages}}"> >> </a> </li>
+			<ul>
+		</div>
+	</div>
+		<br>
+		<h3>Pagina {{categoria.number}} de {{categoria.paginator.num_pages}}</h3>
+	{% endif%}
+{% endblock %}

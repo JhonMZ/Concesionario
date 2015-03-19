@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Lista de marcas
+{% endblock %}
+
+{% block content %}
+	<h1>Marcas</h1>
+	{% if user.is_authenticated %}
+		<a Class="btn btn-primary " href="{% url 'vista_agregar_marca'%}"><li class = "icon-plus"></li>Agregar Marca</a>
+		<br>
+	{% endif %}
+
+	{% if marca %}
+	<table class = "table table-hover">
+		<theader>
+			<tr>
+				<th>marca</th>
+			</tr>
+		</theader>
+		{% for ca in marca %}
+			<tbody>
+				<tr>
+					<td>{{ ca.marnombre }}</td>
+					<td>
+						{% if user.is_authenticated %}
+						<a class = "btn" href = "/edit/marca/{{ ca.id }}"><li class = "icon-pencil"></li> Editar</a>
+						{% endif%}
+					</td>
+				</tr>
+			</tbody>
+		{% endfor %}
+	</table>
+	{% else %}
+		<h2>No existen marcas </h2>
+	{% endif %}
+	{% if marca %}
+	<div class="pagination">
+		<div class ="pagination pagination-centered">
+			<ul>
+				<li><a href="/marcas/page/1"> << </a> </a></li>
+					{%if marca.has_previous%}
+					<li><a href="/marcas/page/{{marca.previous_page_number}}">Anterior</a></li>
+					{%else%}
+						<li><a href="#">Anterior </a></li>
+					{%endif%}
+
+					{% if marca.has_next %}
+						<li><a href ="/marcas/page/{{marca.next_page_number}}">Siguiente</a></li>
+					{% else %}
+						<li><a href ="#">Siguiente</a></li>
+					{% endif %}
+						<li><a href= "/marcas/page/{{marca.paginator.num_pages}}"> >> </a> </li>
+			<ul>
+		</div>
+	</div>
+		<br>
+		<h3>Pagina {{marca.number}} de {{marca.paginator.num_pages}}</h3>
+	{% endif%}
+{% endblock %}

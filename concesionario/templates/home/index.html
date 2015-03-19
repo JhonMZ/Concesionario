@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Inicio - Bienvenidos
+{% endblock %}
+
+{% block content %}
+	<h1>Bienvenidos al concesionario CarrozMZ</h1>
+	<script language="JavaScript1.1">
+var specifyimage=new Array() //Your images
+specifyimage[0]="/media/images/img1.jpg"
+specifyimage[1]="/media/images/img2.jpg"
+specifyimage[2]="/media/images/img3.jpg"
+specifyimage[3]="/media/images/img4.jpeg"
+var delay=3000 //3 seconds
+
+//Counter for array 
+var count =1;
+
+var cubeimage=new Array()
+for (i=0;i<specifyimage.length;i++){
+cubeimage[i]=new Image()
+cubeimage[i].src=specifyimage[i]
+}
+
+function movecube(){
+if (window.createPopup)
+cube.filters[0].apply()
+document.images.cube.src=cubeimage[count].src;
+if (window.createPopup)
+cube.filters[0].play()
+count++;
+if (count==cubeimage.length)
+count=0;
+setTimeout("movecube()",delay)
+}
+
+window.onload=new Function("setTimeout('movecube()',delay)")
+</script><img src="boy4.gif" name="cube" border="0" style="filter:progid:DXImageTransform.Microsoft.Stretch(stretchStyle=&#39;PUSH&#39;)" /> 
+{% endblock %}
