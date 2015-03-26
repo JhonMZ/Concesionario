@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'concesionario.apps.webservices.ws_services',
     #'rest_framework',
     'gunicorn',
+    'dj-static',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
