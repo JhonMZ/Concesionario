@@ -129,7 +129,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'concesionario.apps.ventas',
     'concesionario.apps.webservices.ws_services',
-    #'rest_framework',
+    'rest_framework',
     'gunicorn',
     #'dj-static',
 )
@@ -163,4 +163,11 @@ LOGGING = {
             'propagate': True,
         },
     }
+}
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
 }
