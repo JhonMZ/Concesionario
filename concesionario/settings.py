@@ -163,6 +163,13 @@ LOGGING = {
         },
     }
 }
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'jamelo848@misena.edu.cot'
+EMAIL_HOST_PASSWORD = 'jhon3584'
+
+
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
